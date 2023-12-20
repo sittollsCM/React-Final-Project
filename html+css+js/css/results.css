@@ -1,0 +1,17 @@
+.survey-results-container {
+    margin-bottom: 20px;
+  }
+  
+  .question-container {
+    margin-bottom: 15px;
+  }
+  
+  .btn-success {
+    background-color: #4caf50;
+    border: none;
+  }
+  
+  .btn-success:hover {
+    background-color: #45a049;
+  }
+  

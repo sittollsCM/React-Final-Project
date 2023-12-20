@@ -1,0 +1,159 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #222, #121212);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  font-size: 2em;
+  color: #ff61a6;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+nav {
+  background: #394240;
+  border-radius: 1vw;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+li {
+  margin: 0 10px;
+}
+
+li a {
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: #2c353c;
+  border-radius: 10px;
+}
+
+.nav-link:hover {
+  background-color: #1d242a;
+  color: #fff;
+}
+
+.routes-container {
+  margin-top: 20px;
+}
+
+.container {
+  width: 80%;
+  max-width: 600px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-label,
+.form-control {
+  color: #fff;
+}
+
+/* Create Page Styles */
+.create-container {
+  margin-top: 20px;
+}
+
+.create-container .form-label,
+.create-container .form-control {
+  color: #fff;
+}
+
+.create-container .btn-success {
+  background-color: #4caf50;
+  border: none;
+}
+
+.create-container .btn-success:hover {
+  background-color: #45a049;
+}
+
+/* View Page Styles */
+.survey-container {
+  margin-bottom: 20px;
+  border: 2px solid #3498db;
+  border-radius: 10px;
+  padding: 15px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.survey-container:hover {
+  transform: scale(1.05);
+}
+
+.survey-container h2 {
+  color: #3498db;
+  margin-bottom: 10px;
+}
+
+.survey-container p {
+  color: #95a5a6;
+  font-size: 0.9em;
+}
+
+.survey-container p span {
+  font-weight: bold;
+  color: #2ecc71;
+}
+
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+div {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
