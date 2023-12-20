@@ -1,4 +1,3 @@
-// SurveyDetailPage.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import SurveyAPI from '../Components/SurveyAPI';
@@ -10,7 +9,6 @@ const SurveyDetailPage = ({ fetchSurveys }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch survey details and participant answers when the component mounts
     fetchSurveyDetails();
     fetchParticipantAnswers();
   }, []);
@@ -42,7 +40,7 @@ const SurveyDetailPage = ({ fetchSurveys }) => {
       ) : survey ? (
         <>
           <h2>{survey.title}</h2>
-          {/* Render other survey details as needed */}
+          {}
         </>
       ) : (
         <p>Survey not found.</p>

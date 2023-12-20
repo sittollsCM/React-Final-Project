@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Clear previous results
         resultsContainer.innerHTML = '';
 
         surveys.forEach((survey, surveyIndex) => {
@@ -37,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 questionContainer.appendChild(questionText);
 
                 if (question.questionType === 'openQuestion') {
-                    // For open-ended questions, show the answered text
                     const openAnswers = getOpenAnswers(question, surveys);
                     openAnswers.forEach((answer) => {
                         const openAnswerResult = document.createElement('p');
@@ -45,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         questionContainer.appendChild(openAnswerResult);
                     });
                 } else if (question.questionType === 'singleChoice' || question.questionType === 'multipleChoice') {
-                    // For radio questions, show the percentage of each answer
                     const answerCounts = getAnswerCounts(question, surveys);
 
                     for (const [answerText, count] of Object.entries(answerCounts)) {

@@ -1,4 +1,3 @@
-// SurveyForm.jsx
 import React, { useState, useEffect } from 'react';
 import SurveyQuestion from './SurveyQuestion';
 import '../App.css';
@@ -8,7 +7,6 @@ const SurveyForm = () => {
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    // Load survey data from local storage on component mount
     const savedSurveyData = JSON.parse(localStorage.getItem('surveyData')) || {};
     setSurveyTitle(savedSurveyData.title || '');
     setQuestions(savedSurveyData.questions || []);
@@ -32,10 +30,14 @@ const SurveyForm = () => {
   };
 
   const saveSurvey = () => {
-    // Save survey data to local storage
     const surveyData = { title: surveyTitle, questions };
-    localStorage.setItem('surveyData', JSON.stringify(surveyData));
-    console.log('Survey Data:', surveyData);
+    const savedSurveys = JSON.parse(localStorage.getItem('savedSurveys')) || [];
+    const updatedSurveys = [...savedSurveys, surveyData];
+    localStorage.setItem('savedSurveys', JSON.stringify(updatedSurveys));
+
+    setSurveyTitle('');
+    setQuestions([]);
+    localStorage.removeItem('surveyData');
   };
 
   return (
@@ -55,7 +57,7 @@ const SurveyForm = () => {
       <div>
         {questions.map((question) => (
           <SurveyQuestion
-            key={`question-${question.id}`} // Use a combination of 'question' and id for a unique key
+            key={question.id}
             question={question}
             onRemove={() => removeQuestion(question.id)}
             onUpdate={(updatedQuestion) => updateQuestion(question.id, updatedQuestion)}

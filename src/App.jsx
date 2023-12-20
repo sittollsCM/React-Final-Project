@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import CreateSurvey from './Components/CreateSurvey';
 import SurveyList from './Components/SurveyList';
+import Participation from './Components/Participation';
 import './App.css';
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
           <Routes>
             <Route path="/create" element={<CreateSurvey />} />
             <Route path="/surveys" element={<SurveyList />} />
+            <Route path="/participate/:surveyId" element={<Participation />} />
           </Routes>
         </div>
       </div>

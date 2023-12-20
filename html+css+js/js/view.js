@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
             surveyContainer.appendChild(numQuestions);
 
             const participateButton = document.createElement('a');
-            participateButton.href = `participate.html?id=${survey.id}`; // Use the unique identifier
+            participateButton.href = `participate.html?id=${survey.id}`;
             participateButton.className = 'btn btn-primary';
             participateButton.textContent = 'Participate';
             surveyContainer.appendChild(participateButton);

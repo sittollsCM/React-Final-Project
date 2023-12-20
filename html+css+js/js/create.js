@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const target = event.target;
         if (target.name.startsWith('questionType')) {
             const answersContainer = target.closest('.question-container').querySelector('.answers-container');
-            answersContainer.innerHTML = ''; // Clear previous answers
+            answersContainer.innerHTML = '';
 
             if (target.value !== 'openQuestion') {
                 addAnswerField(target);
@@ -113,9 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const questionContainer = target.closest('.question-container');
         let answersContainer;
 
-        // Check if the question container exists
         if (questionContainer) {
-            // Check if the answers container exists, if not, create it
             try {
                 answersContainer = questionContainer.querySelector('.answers-container');
             } catch (error) {
@@ -124,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 questionContainer.appendChild(answersContainer);
             }
 
-            // Check if the question type is not "Open Question"
             const questionTypeSelect = questionContainer.querySelector('[name^="questionType"]');
             if (questionTypeSelect && !questionTypeSelect.value.startsWith('openQuestion')) {
                 const answerContainers = answersContainer.querySelectorAll('.answer-container');
@@ -207,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function saveSurvey() {
         const surveyData = {
-            id: generateUniqueId(), // Assign a unique identifier
+            id: generateUniqueId(),
             title: document.getElementById('surveyTitle').value,
             questions: []
         };
@@ -231,13 +228,10 @@ document.addEventListener('DOMContentLoaded', function () {
             surveyData.questions.push(question);
         });
 
-        // Retrieve existing survey data from local storage
         const existingSurveys = JSON.parse(localStorage.getItem('surveys')) || [];
 
-        // Add the new survey data to the array
         existingSurveys.push(surveyData);
 
-        // Save the updated array back to local storage
         localStorage.setItem('surveys', JSON.stringify(existingSurveys));
 
         alert('Survey submitted successfully!');
@@ -246,7 +240,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function generateUniqueId() {
-        // Generate a simple unique identifier (for demo purposes)
         return Math.random().toString(36).substring(7);
     }
 });

@@ -1,4 +1,3 @@
-// SurveyQuestion.jsx
 import React from 'react';
 import SurveyAnswer from './SurveyAnswer';
 
@@ -25,10 +24,22 @@ const SurveyQuestion = ({ question = {}, onRemove, onUpdate }) => {
     onUpdate({ ...question, answers: (question.answers || []).filter((answer) => answer.id !== id) });
   };
 
+  const updateAnswer = (id, updatedAnswer) => {
+    onUpdate({
+      ...question,
+      answers: (question.answers || []).map((answer) => (answer.id === id ? updatedAnswer : answer)),
+    });
+  };
+
   const renderAnswers = () => {
     if (question.answers && Array.isArray(question.answers)) {
       return question.answers.map((answer) => (
-        <SurveyAnswer key={`answer-${answer.id}`} answer={answer} onRemove={() => removeAnswer(answer.id)} onUpdate={onUpdate} />
+        <SurveyAnswer
+          key={`answer-${answer.id}`}
+          answer={answer}
+          onRemove={() => removeAnswer(answer.id)}
+          onUpdate={(updatedAnswer) => updateAnswer(answer.id, updatedAnswer)}
+        />
       ));
     }
     return null;

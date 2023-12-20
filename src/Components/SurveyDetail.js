@@ -1,4 +1,3 @@
-// SurveyDetail.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getSurvey } from './SurveyAPI';
@@ -33,7 +32,7 @@ const SurveyDetail = () => {
           <li key={index}>{question.questionText}</li>
         ))}
       </ul>
-      {/* Add more details if needed */}
+      {}
     </div>
   );
 };

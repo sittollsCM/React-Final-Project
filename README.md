@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -10,4 +9,7 @@ Currently, two official plugins are available:
 =======
 # React-Final-Project
 Web Application using React Framework
->>>>>>> 86f0d233db191304e3713718d9592ef803cdcfcf
+Initialize by using
+## "npm run dev" command in command line
+
+All the necessary node packages are in packages.json

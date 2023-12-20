@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const surveyId = getSurveyIdFromURL();
 
     const savedSurveys = JSON.parse(localStorage.getItem('surveys')) || [];
-    const currentSurvey = savedSurveys.find(survey => survey.id == surveyId); // Note the usage of '==' for loose comparison
+    const currentSurvey = savedSurveys.find(survey => survey.id == surveyId);
 
     if (currentSurvey) {
         renderSurveyQuestions(currentSurvey);
@@ -78,33 +78,26 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Load existing surveys from local storage
         const savedSurveys = JSON.parse(localStorage.getItem('surveys')) || [];
 
-        // Find the survey by ID in the existing surveys
-        const existingSurveyIndex = savedSurveys.findIndex(s => s.id == survey.id); // Note the usage of '==' for loose comparison
+        const existingSurveyIndex = savedSurveys.findIndex(s => s.id == survey.id);
 
         if (existingSurveyIndex !== -1) {
-            // Update the existing survey with the new participant answers
             if (!savedSurveys[existingSurveyIndex].participantAnswers) {
                 savedSurveys[existingSurveyIndex].participantAnswers = [];
             }
             savedSurveys[existingSurveyIndex].participantAnswers = savedSurveys[existingSurveyIndex].participantAnswers.concat(participantAnswers);
         } else {
-            // If the survey doesn't exist in local storage, add it with participant answers
             savedSurveys.push({
                 ...survey,
                 participantAnswers: participantAnswers
             });
         }
 
-        // Save the updated surveys to local storage
         localStorage.setItem('surveys', JSON.stringify(savedSurveys));
 
-        // Redirect to the index page
         window.location.href = 'index.html';
 
-        // Perform other actions as needed
         console.log('Participant Answers:', participantAnswers);
         alert('Answers submitted successfully!');
     }

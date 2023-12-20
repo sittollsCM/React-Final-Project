@@ -1,11 +1,9 @@
-// SurveyListPage.js
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SurveyAPI from '../Components/SurveyAPI';
 
 const SurveyListPage = ({ surveys }) => {
   useEffect(() => {
-    // Fetch surveys when the component mounts
     fetchSurveys();
   }, []);
 

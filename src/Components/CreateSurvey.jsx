@@ -1,4 +1,3 @@
-// CreateSurvey.jsx
 import React from 'react';
 import SurveyForm from '../Components/SurveyForm';
 import "../pages/Create.css"

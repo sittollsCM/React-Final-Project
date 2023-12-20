@@ -1,4 +1,3 @@
-// Create.js
 import React, { useState } from 'react';
 import SurveyForm from '../Components/SurveyForm';
 import SurveyAPI from '../Components/SurveyAPI';
@@ -11,7 +10,6 @@ const Create = ({ fetchSurveys }) => {
     try {
       setIsCreating(true);
       await SurveyAPI.createSurvey(surveyData);
-      // Fetch surveys to update the list after creation
       fetchSurveys();
       setIsCreating(false);
     } catch (error) {

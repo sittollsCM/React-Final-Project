@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Clear previous delete content
         deleteContainer.innerHTML = '';
 
         surveys.forEach((survey, surveyIndex) => {
@@ -45,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
         allSurveys.splice(surveyIndex, 1);
         localStorage.setItem('surveys', JSON.stringify(allSurveys));
 
-        // Re-render the delete page after deletion
         renderAllSurveysToDelete(allSurveys);
     }
 });

@@ -1,4 +1,3 @@
-// withErrorHandling.js
 import React, { Component } from 'react';
 import ErrorIndicator from '../errors/ErrorIndicator';
 

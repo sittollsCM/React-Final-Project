@@ -1,4 +1,3 @@
-// src/components/ErrorHandler.js
 import React, { useState } from 'react';
 
 const ErrorHandler = ({ children }) => {
