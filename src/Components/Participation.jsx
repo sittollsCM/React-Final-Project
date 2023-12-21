@@ -9,7 +9,7 @@ const useSurvey = (surveyId) => {
 
   useEffect(() => {
     const savedSurveys = JSON.parse(localStorage.getItem('savedSurveys')) || [];
-    const currentSurvey = savedSurveys.find((s) => s.title === decodeURIComponent(surveyId));
+    const currentSurvey = savedSurveys.find((s) => s.id === parseInt(surveyId));
 
     setSurvey(currentSurvey);
   }, [surveyId]);
@@ -26,7 +26,7 @@ const Participation = () => {
 
   const handleSubmit = (responses) => {
     const attempts = JSON.parse(localStorage.getItem('attempts')) || [];
-    const newAttempt = { surveyId: survey.title, responses };
+    const newAttempt = { surveyId: survey.id, responses };
     const updatedAttempts = [...attempts, newAttempt];
     localStorage.setItem('attempts', JSON.stringify(updatedAttempts));
 

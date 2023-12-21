@@ -10,8 +10,8 @@ const SurveyList = () => {
     setSurveys(savedSurveys);
   }, []);
 
-  const handleDeleteSurvey = (surveyTitle) => {
-    const updatedSurveys = surveys.filter((survey) => survey.title !== surveyTitle);
+  const handleDeleteSurvey = (surveyId) => {
+    const updatedSurveys = surveys.filter((survey) => survey.id !== surveyId);
     setSurveys(updatedSurveys);
     localStorage.setItem('savedSurveys', JSON.stringify(updatedSurveys));
   };
@@ -22,13 +22,13 @@ const SurveyList = () => {
       {surveys.length > 0 ? (
         <ul>
           {surveys.map((survey) => (
-            <li key={survey.title}>
+            <li key={survey.id}>
               <span>{survey.title}</span>
               <div>
-                <Link to={`/participate/${encodeURIComponent(survey.title)}`} className="participate-link">
+                <Link to={`/participate/${survey.id}`} className="participate-link">
                   Participate
                 </Link>
-                <button onClick={() => handleDeleteSurvey(survey.title)}>Delete</button>
+                <button onClick={() => handleDeleteSurvey(survey.id)}>Delete</button>
               </div>
             </li>
           ))}
