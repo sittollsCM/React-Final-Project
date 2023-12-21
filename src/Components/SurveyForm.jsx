@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SurveyQuestion from './SurveyQuestion';
 import '../App.css';
 
 const SurveyForm = () => {
+  const navigate = useNavigate();
   const [surveyTitle, setSurveyTitle] = useState('');
   const [questions, setQuestions] = useState([]);
 
@@ -15,7 +17,7 @@ const SurveyForm = () => {
   const addQuestion = () => {
     setQuestions((prevQuestions) => [
       ...prevQuestions,
-      { id: prevQuestions.length + 1, text: '', type: 'singleChoice', answers: [] },
+      { id: new Date().getTime(), text: '', type: 'singleChoice', answers: [] },
     ]);
   };
 
@@ -30,7 +32,7 @@ const SurveyForm = () => {
   };
 
   const saveSurvey = () => {
-    const surveyData = { title: surveyTitle, questions };
+    const surveyData = { id: new Date().getTime(), title: surveyTitle, questions };
     const savedSurveys = JSON.parse(localStorage.getItem('savedSurveys')) || [];
     const updatedSurveys = [...savedSurveys, surveyData];
     localStorage.setItem('savedSurveys', JSON.stringify(updatedSurveys));
@@ -38,6 +40,7 @@ const SurveyForm = () => {
     setSurveyTitle('');
     setQuestions([]);
     localStorage.removeItem('surveyData');
+    navigate('/surveys');
   };
 
   return (
@@ -55,9 +58,9 @@ const SurveyForm = () => {
       </div>
 
       <div>
-        {questions.map((question) => (
+        {questions.map((question, index) => (
           <SurveyQuestion
-            key={question.id}
+            key={index}
             question={question}
             onRemove={() => removeQuestion(question.id)}
             onUpdate={(updatedQuestion) => updateQuestion(question.id, updatedQuestion)}

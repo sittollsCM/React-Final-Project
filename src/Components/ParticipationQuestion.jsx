@@ -1,22 +1,30 @@
+// ParticipationQuestion.jsx
 import React from 'react';
 
 const ParticipationQuestion = ({ question, responses, setResponses }) => {
   return (
     <div className="participation-question">
       <label className="participation-label">{question.text}</label>
+      <br /> <br />
       {question.type === 'singleChoice' ? (
         <select
           value={responses[question.id] || ''}
-          onChange={(e) => setResponses((prev) => ({ ...prev, [question.id]: e.target.value }))}
+          onChange={(e) =>
+            setResponses((prev) => ({ ...prev, [question.id]: e.target.value }))
+          }
           required
           className="form-select"
         >
-          <option value="" disabled>Select an option</option>
+          <option value="" disabled>
+            Select an option
+          </option>
           {question.answers.map((answer) => (
-            <option key={answer.id} value={answer.text}>{answer.text}</option>
+            <option key={answer.id} value={answer.text}>
+              {answer.text}
+            </option>
           ))}
         </select>
-      ) : (
+      ) : question.type === 'multipleChoice' ? (
         <div>
           {question.answers.map((answer) => (
             <div key={answer.id} className="form-check">
@@ -38,10 +46,25 @@ const ParticipationQuestion = ({ question, responses, setResponses }) => {
                 }}
                 className="form-check-input"
               />
-              <label htmlFor={`answer_${question.id}_${answer.id}`} className="form-check-label">{answer.text}</label>
+              <label
+                htmlFor={`answer_${question.id}_${answer.id}`}
+                className="form-check-label"
+              >
+                {answer.text}
+              </label>
             </div>
           ))}
         </div>
+      ) : (
+        <textarea
+          value={responses[question.id] || ''}
+          onChange={(e) =>
+            setResponses((prev) => ({ ...prev, [question.id]: e.target.value }))
+          }
+          className="form-control"
+          rows="3"
+          placeholder="Your answer..."
+        ></textarea>
       )}
     </div>
   );

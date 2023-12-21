@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ParticipationForm from './ParticipationForm';
 import '../App.css';
 import './Participation.css';
 
+const useSurvey = (surveyId) => {
+  const [survey, setSurvey] = useState(null);
+
+  useEffect(() => {
+    const savedSurveys = JSON.parse(localStorage.getItem('savedSurveys')) || [];
+    const currentSurvey = savedSurveys.find((s) => s.title === decodeURIComponent(surveyId));
+
+    setSurvey(currentSurvey);
+  }, [surveyId]);
+
+  return survey;
+};
+
 const Participation = () => {
   const { surveyId } = useParams();
-  const savedSurveys = JSON.parse(localStorage.getItem('savedSurveys')) || [];
-  const survey = savedSurveys.find((s) => s.title === decodeURIComponent(surveyId));
+  const survey = useSurvey(surveyId);
 
   const [submitted, setSubmitted] = React.useState(false);
   const [responses, setResponses] = React.useState({});
